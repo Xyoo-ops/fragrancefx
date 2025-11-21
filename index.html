@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Élégance | Parfum Niche Mewah</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'brand-gold': {
+                            300: '#e6d6b8',
+                            400: '#c9a87a',
+                            500: '#b8956a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+                        'fade-out-down': 'fadeOutDown 0.4s ease-in forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px) scale(0.98)' },
+                            '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+                        },
+                        fadeOutDown: {
+                            '0%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+                            '100%': { opacity: '0', transform: 'translateY(20px) scale(0.98)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-black text-gray-200 font-sans overflow-x-hidden">
+
+    <div id="night-sky-background"></div>
+
+    <div id="loading-curtain" class="loading-curtain">
+        <div class="text-center royal-welcome">
+            <div class="font-serif text-6xl md:text-8xl font-bold text-white mb-4 gold-glow">
+                ÉLÉG<span class="text-brand-gold-400">ANCE</span>
+            </div>
+            <div class="w-32 h-1 bg-gradient-to-r from-transparent via-brand-gold-400 to-transparent mx-auto mb-6"></div>
+            <p class="text-xl text-gray-300 uppercase tracking-widest font-light">Selamat Datang</p>
+            <div class="flex justify-center space-x-2 mt-12">
+                <div class="w-3 h-3 bg-brand-gold-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                <div class="w-3 h-3 bg-brand-gold-400 rounded-full animate-bounce" style="animation-delay: 0.3s"></div>
+                <div class="w-3 h-3 bg-brand-gold-400 rounded-full animate-bounce" style="animation-delay: 0.5s"></div>
+            </div>
+        </div>
+    </div>
+
+    <header id="header" class="fixed top-0 left-0 right-0 z-40 flex justify-between items-center px-6 md:px-12 py-5 transition-all duration-300 bg-black/70 backdrop-blur-md border-b border-white/5">
+        <a href="#" onclick="showPage('beranda')" class="font-serif text-3xl font-bold tracking-wider text-white z-10">ÉLÉG<span class="text-brand-gold-400">ANCE</span></a>
+        
+        <nav class="hidden md:flex items-center gap-6">
+            <a href="#" onclick="showPage('beranda')" class="nav-link text-sm uppercase tracking-wider text-gray-300 hover:text-white" data-page="beranda">Beranda</a>
+            <a href="#" onclick="showPage('koleksi-pria')" class="nav-link text-sm uppercase tracking-wider text-gray-300 hover:text-white" data-page="koleksi-pria">Pria</a>
+            <a href="#" onclick="showPage('koleksi-wanita')" class="nav-link text-sm uppercase tracking-wider text-gray-300 hover:text-white" data-page="koleksi-wanita">Wanita</a>
+            <a href="#" onclick="showPage('koleksi')" class="nav-link text-sm uppercase tracking-wider text-gray-300 hover:text-white" data-page="koleksi">Koleksi</a>
+            <a href="#" onclick="showPage('quiz')" class="nav-link text-sm uppercase tracking-wider text-gray-300 hover:text-white" data-page="quiz">Fragrance Finder</a>
+            <a href="#" onclick="showPage('about')" class="nav-link text-sm uppercase tracking-wider text-gray-300 hover:text-white" data-page="about">About</a>
+        </nav>
+        
+        <div class="flex items-center gap-4">
+            <button onclick="toggleSearch()" class="text-gray-200 hover:text-brand-gold-400 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+            </button>
+            <button onclick="showPage('wishlist')" class="text-gray-200 hover:text-brand-gold-400 transition-colors relative">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-.318-.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                <span id="wishlist-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+            </button>
+            <button onclick="showPage('cart')" class="text-gray-200 hover:text-brand-gold-400 transition-colors relative">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+            </button>
+            <button id="menu-toggle" class="md:hidden text-gray-200 hover:text-brand-gold-400 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+            </button>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-black z-30 transform -translate-y-full transition-transform duration-300 md:hidden">
+        <nav class="flex flex-col items-center justify-center h-full gap-8 pt-20">
+            <a href="#" onclick="showPage('beranda'); toggleMobileMenu()" class="text-xl font-medium uppercase tracking-wider text-gray-200 hover:text-brand-gold-400 transition-colors">Beranda</a>
+            <a href="#" onclick="showPage('koleksi-pria'); toggleMobileMenu()" class="text-xl font-medium uppercase tracking-wider text-gray-200 hover:text-brand-gold-400 transition-colors">Pria</a>
+            <a href="#" onclick="showPage('koleksi-wanita'); toggleMobileMenu()" class="text-xl font-medium uppercase tracking-wider text-gray-200 hover:text-brand-gold-400 transition-colors">Wanita</a>
+            <a href="#" onclick="showPage('koleksi'); toggleMobileMenu()" class="text-xl font-medium uppercase tracking-wider text-gray-200 hover:text-brand-gold-400 transition-colors">Koleksi</a>
+            <a href="#" onclick="showPage('quiz'); toggleMobileMenu()" class="text-xl font-medium uppercase tracking-wider text-gray-200 hover:text-brand-gold-400 transition-colors">Fragrance Finder</a>
+            <a href="#" onclick="showPage('about'); toggleMobileMenu()" class="text-xl font-medium uppercase tracking-wider text-gray-200 hover:text-brand-gold-400 transition-colors">About</a>
+        </nav>
+    </div>
+
+    <div id="search-overlay" class="fixed top-0 left-0 w-full h-full bg-black/95 z-50 hidden items-center justify-center backdrop-blur-sm">
+        <div class="max-w-3xl w-full px-6">
+            <div class="relative">
+                <input type="text" id="search-input" placeholder="Cari parfum..." class="w-full bg-zinc-900 text-white text-2xl px-8 py-6 rounded-lg border-2 border-brand-gold-400 focus:outline-none focus:border-brand-gold-300">
+                <button onclick="toggleSearch()" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+            <p class="text-gray-400 mt-4 text-center">Coba: "Noir", "Oud", "Fresh"</p>
+        </div>
+    </div>
+    
+    <main id="main-content" class="pt-24 pb-12 min-h-screen">
+
+        <div id="beranda" class="page active">
+            <section class="min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('placeholder-hero.jpg');">
+                <div class="text-center royal-welcome p-8 bg-black/50 backdrop-blur-sm rounded-xl">
+                    <h1 class="font-serif text-6xl md:text-9xl font-extrabold text-white gold-glow drop-shadow-lg mb-4">The Grand Collection</h1>
+                    <p class="text-xl md:text-2xl text-brand-gold-300 mb-8 uppercase tracking-widest">Temukan Scent Signature Anda</p>
+                    <a href="#" onclick="showPage('koleksi')" class="inline-block px-8 py-3 text-lg uppercase tracking-wider font-semibold bg-brand-gold-400 text-black rounded-full shadow-lg hover:bg-brand-gold-300 transition-all luxury-border">Jelajahi Sekarang</a>
+                </div>
+            </section>
+            
+            <section class="py-16 px-6 md:px-12 bg-zinc-900">
+                <h2 class="text-4xl font-serif font-bold text-center text-white mb-12">Bestseller Musim Ini</h2>
+                <div id="bestseller-products" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    </div>
+            </section>
+        </div>
+
+        <div id="koleksi" class="page hidden px-6 md:px-12 pt-12">
+            <h1 class="text-5xl font-serif font-bold text-white mb-10 text-center">Seluruh Koleksi Parfum Niche</h1>
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button onclick="filterProducts('all')" class="filter-btn px-4 py-2 bg-brand-gold-400 text-black rounded-full text-sm font-semibold hover:bg-brand-gold-300 transition-colors">Semua</button>
+                <button onclick="filterProducts('Pria')" class="filter-btn px-4 py-2 bg-zinc-800 text-gray-300 rounded-full text-sm font-semibold hover:bg-brand-gold-400 hover:text-black transition-colors">Pria</button>
+                <button onclick="filterProducts('Wanita')" class="filter-btn px-4 py-2 bg-zinc-800 text-gray-300 rounded-full text-sm font-semibold hover:bg-brand-gold-400 hover:text-black transition-colors">Wanita</button>
+                <button onclick="filterProducts('Unisex')" class="filter-btn px-4 py-2 bg-zinc-800 text-gray-300 rounded-full text-sm font-semibold hover:bg-brand-gold-400 hover:text-black transition-colors">Unisex</button>
+                <button onclick="filterProducts('Oud')" class="filter-btn px-4 py-2 bg-zinc-800 text-gray-300 rounded-full text-sm font-semibold hover:bg-brand-gold-400 hover:text-black transition-colors">Oud Collection</button>
+            </div>
+            <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                </div>
+        </div>
+
+        <div id="koleksi-pria" class="page hidden px-6 md:px-12 pt-12">
+            <h1 class="text-5xl font-serif font-bold text-white mb-10 text-center">Koleksi untuk Pria</h1>
+            <div id="product-list-pria" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                </div>
+        </div>
+
+        <div id="koleksi-wanita" class="page hidden px-6 md:px-12 pt-12">
+            <h1 class="text-5xl font-serif font-bold text-white mb-10 text-center">Koleksi untuk Wanita</h1>
+            <div id="product-list-wanita" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                </div>
+        </div>
+
+        <div id="quiz" class="page hidden min-h-screen flex items-center justify-center p-6 md:p-12">
+            <div class="max-w-3xl w-full bg-zinc-900 p-8 md:p-12 rounded-lg shadow-2xl border border-brand-gold-400/30 animate-fade-in-up">
+                <h1 class="text-4xl font-serif font-bold text-white mb-6 text-center">Fragrance Finder</h1>
+                <p class="text-gray-400 text-center mb-8">Jawab beberapa pertanyaan singkat untuk menemukan parfum ÉLÉGANCE yang paling cocok dengan kepribadian dan gaya Anda.</p>
+                
+                <div class="progress-bar mb-8">
+                    <div id="quiz-progress" class="progress-bar-inner"></div>
+                </div>
+
+                <div id="quiz-content">
+                    </div>
+
+                <div id="quiz-navigation" class="flex justify-between mt-8">
+                    <button id="quiz-back-btn" onclick="handleBack()" class="px-6 py-2 border border-gray-600 text-gray-300 rounded-full hover:bg-zinc-800 transition-colors hidden">
+                        &larr; Sebelumnya
+                    </button>
+                    <button id="quiz-next-btn" onclick="handleNext()" class="px-6 py-2 bg-brand-gold-400 text-black rounded-full font-semibold hover:bg-brand-gold-300 transition-colors ml-auto hidden">
+                        Lanjut &rarr;
+                    </button>
+                    <button id="quiz-start-btn" onclick="runQuiz()" class="w-full px-8 py-3 text-lg uppercase tracking-wider font-semibold bg-brand-gold-400 text-black rounded-full shadow-lg hover:bg-brand-gold-300 transition-all">
+                        Mulai Kuis
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="cart" class="page hidden px-6 md:px-12 pt-12">
+            <h1 class="text-5xl font-serif font-bold text-white mb-10 text-center">Keranjang Belanja</h1>
+            <div id="cart-items" class="max-w-4xl mx-auto space-y-6">
+                </div>
+            <div id="cart-summary" class="max-w-4xl mx-auto mt-8 border-t border-brand-gold-400/50 pt-6 flex justify-between items-center text-xl font-semibold">
+                <span class="text-white">Total:</span>
+                <span id="cart-total" class="text-brand-gold-400">Rp 0</span>
+            </div>
+            <div class="max-w-4xl mx-auto mt-8 text-right">
+                <button class="px-8 py-3 text-lg uppercase tracking-wider font-semibold bg-brand-gold-400 text-black rounded-full shadow-lg hover:bg-brand-gold-300 transition-all">Checkout</button>
+            </div>
+            <p id="empty-cart-message" class="text-center text-gray-500 mt-12 hidden">Keranjang Anda kosong. Mari temukan parfum mewah Anda!</p>
+        </div>
+
+        <div id="wishlist" class="page hidden px-6 md:px-12 pt-12">
+            <h1 class="text-5xl font-serif font-bold text-white mb-10 text-center">Daftar Keinginan (Wishlist)</h1>
+            <div id="wishlist-items" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                </div>
+            <p id="empty-wishlist-message" class="text-center text-gray-500 mt-12 hidden">Daftar Keinginan Anda kosong.</p>
+        </div>
+
+        <div id="about" class="page hidden px-6 md:px-12 pt-12">
+            <h1 class="text-5xl font-serif font-bold text-white mb-10 text-center">Tentang ÉLÉGANCE</h1>
+            <div class="max-w-4xl mx-auto text-lg space-y-6 text-gray-300">
+                <p><strong>ÉLÉGANCE</strong> didirikan dengan satu misi: untuk menyajikan seni parfum niche kepada para connoisseur di seluruh dunia. Kami percaya bahwa wewangian adalah bentuk ekspresi diri yang paling intim dan mewah.</p>
+                <h2 class="text-3xl font-serif font-bold text-brand-gold-400 pt-4">Filosofi Kami</h2>
+                <p>Setiap botol parfum ÉLÉGANCE adalah hasil karya artisan, dibuat dari bahan-bahan paling langka dan berkualitas tinggi yang bersumber dari seluruh dunia. Kami menolak produksi massal demi kualitas, inovasi, dan keunikan yang tak tertandingi.</p>
+                <h2 class="text-3xl font-serif font-bold text-brand-gold-400 pt-4">FAQ</h2>
+                <div class="space-y-4">
+                    <details class="bg-zinc-900 p-4 rounded-lg border border-brand-gold-400/20">
+                        <summary class="font-semibold text-white cursor-pointer flex justify-between items-center">
+                            Bagaimana cara kerja Fragrance Finder?
+                            <svg class="w-5 h-5 transition-transform duration-300 details-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </summary>
+                        <p class="mt-2 text-gray-400 border-t border-zinc-800 pt-2">Fragrance Finder adalah kuis interaktif yang menganalisis preferensi Anda terhadap aroma (misalnya: Woody, Floral, Oriental) dan kesempatan penggunaannya, kemudian merekomendasikan tiga parfum dari koleksi kami yang paling sesuai.</p>
+                    </details>
+                    <details class="bg-zinc-900 p-4 rounded-lg border border-brand-gold-400/20">
+                        <summary class="font-semibold text-white cursor-pointer flex justify-between items-center">
+                            Apakah parfum ÉLÉGANCE memiliki garansi?
+                            <svg class="w-5 h-5 transition-transform duration-300 details-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </summary>
+                        <p class="mt-2 text-gray-400 border-t border-zinc-800 pt-2">Ya, kami menawarkan garansi kepuasan 100%. Anda dapat mengembalikan produk dalam 14 hari dalam kondisi aslinya untuk pengembalian dana penuh.</p>
+                    </details>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    
+    <footer class="bg-zinc-900 border-t border-brand-gold-400/20 py-8 px-6 md:px-12">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-gray-400">
+            <p class="font-serif text-2xl font-bold tracking-wider text-white mb-4 md:mb-0">ÉLÉG<span class="text-brand-gold-400">ANCE</span></p>
+            <nav class="flex gap-6 text-sm uppercase tracking-wider">
+                <a href="#" onclick="showPage('about')" class="hover:text-brand-gold-400 transition-colors">Bantuan</a>
+                <a href="#" class="hover:text-brand-gold-400 transition-colors">Kebijakan Privasi</a>
+                <a href="#" class="hover:text-brand-gold-400 transition-colors">Kontak</a>
+            </nav>
+            <p class="mt-4 md:mt-0 text-sm">&copy; 2024 ÉLÉGANCE. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <div id="product-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden">
+        <div id="modal-content-container" class="bg-zinc-900 rounded-xl shadow-2xl max-w-4xl w-full flex flex-col md:flex-row overflow-hidden transform scale-95 opacity-0 transition-all duration-300">
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+            <div class="md:w-1/2 p-6 flex items-center justify-center bg-black/50">
+                <img id="modal-image" src="" alt="Parfum" class="w-full max-h-96 object-contain animate-float">
+            </div>
+            <div class="md:w-1/2 p-8 space-y-4">
+                <h2 id="modal-name" class="font-serif text-4xl font-bold text-white">Nama Parfum</h2>
+                <p id="modal-category" class="text-sm uppercase tracking-widest text-brand-gold-400">Kategori</p>
+                <p id="modal-price" class="text-3xl font-light text-white">Rp 1.000.000</p>
+                <div id="modal-notes" class="text-gray-400">
+                    <p class="font-semibold text-white mt-4">Top Notes: <span id="modal-top-notes"></span></p>
+                    <p class="font-semibold text-white">Middle Notes: <span id="modal-middle-notes"></span></p>
+                    <p class="font-semibold text-white">Base Notes: <span id="modal-base-notes"></span></p>
+                </div>
+                <p id="modal-description" class="text-gray-300 pt-2"></p>
+                <div class="flex items-center space-x-4 pt-4">
+                    <button id="modal-add-to-cart" class="flex-grow px-6 py-3 text-lg uppercase tracking-wider font-semibold bg-brand-gold-400 text-black rounded-full shadow-lg hover:bg-brand-gold-300 transition-all" onclick="addToCart(currentProductModal.id); closeProductModal()">
+                        Masukkan Keranjang
+                    </button>
+                    <button id="modal-wishlist-btn" onclick="toggleWishlist(currentProductModal.id)" class="text-gray-400 hover:text-red-500 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-.318-.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
